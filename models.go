@@ -30,3 +30,27 @@ func getBook(id string) *Book {
 	}
 	return nil
 }
+
+func storeBook(book Book) {
+	books = append(books, &book)
+}
+
+func deleteBook(id string) *Book {
+	for i, book := range books {
+		if book.ID == id {
+			books = append(books[:i], (books)[i+1:]...)
+			return &Book{}
+		}
+	}
+	return nil
+}
+
+func updateBook(id string, bookUpdate Book) *Book {
+	for i, book := range books {
+		if book.ID == id {
+			books[i] = &bookUpdate
+			return book
+		}
+	}
+	return nil
+} 
